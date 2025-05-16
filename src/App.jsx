@@ -121,25 +121,35 @@ const handleAddFighter = (fighter) => {
     </div>
     <ul>
       {zombieFighters.map((fighter) => (
-      <li key={fighter.id}>
-        <img src={fighter.img} />
-        <h2>{fighter.name}</h2>
-        <p>Price: ${fighter.price}</p>
-        <p>Strength: {fighter.strength}</p>
-        <p>Agility: {fighter.agility}</p>
-        <button onClick={() => handleAddFighter(fighter)}>Add Fighter</button>
-      </li>
-    ))}
+        <li key={fighter.id}>
+          <img src={fighter.img} />
+          <h2>{fighter.name}</h2>
+          <p>Price: ${fighter.price}</p>
+          <p>Strength: {fighter.strength}</p>
+          <p>Agility: {fighter.agility}</p>
+          <button onClick={() => handleAddFighter(fighter)}>Add Fighter</button>
+        </li>
+      ))}
     </ul>
 
     <h2>My Team</h2>
-    <ul>
-      {team.map((fighter) => (
-        <li key={fighter.id}>{fighter.name}</li>
-      ))}
-    </ul>
+    {team.length === 0 ? ( 
+      <p>Please choose and add your fighters!</p>
+    ) : (
+      <ul>
+        {team.map((fighter) => (
+          <li key={fighter.id}>
+            <img src={fighter.img} />
+            <h2>{fighter.name}</h2>
+            <p>Price: ${fighter.price}</p>
+            <p>Strength: {fighter.strength}</p>
+            <p>Agility: {fighter.agility}</p>
+          </li>
+        ))}
+      </ul>
+    )}
     </>
   )
 }
 
-export default App
+export default App;
