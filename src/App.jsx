@@ -93,14 +93,20 @@ function App() {
         img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png',
       },
     ]);
+  
+  // Create a regular variable named totalStrength and calculate the team strength using reduce() method
+  const totalStrength = team.reduce((total, fighter) => total + fighter.strength, 0);
+  
+  // Create a variable for the total agility of your team using the reduce() method
+  const totalAgility = team.reduce((total, fighter) => total + fighter.agility, 0);
 
-// Create a function named handleAddFighter()
-const handleAddFighter = (fighter) => {
-  // if there's not enough money, prevent purchase
-  if (money < fighter.price) {
-    console.log("You don't have enough money!");
-    return;
-  }
+  // Create a function named handleAddFighter()
+  const handleAddFighter = (fighter) => {
+    // if there's not enough money, prevent purchase
+    if (money < fighter.price) {
+      console.log("You don't have enough money!");
+      return;
+    }
 
   // add the fighter to the team
   setTeam([...team, fighter]);
@@ -131,8 +137,13 @@ const handleAddFighter = (fighter) => {
         </li>
       ))}
     </ul>
-
-    <h2>My Team</h2>
+    
+    <div className='team-details'>
+      <h2>My Team</h2>
+      <h3>Total Team Strength: {totalStrength}</h3>
+      <h3>Total Team Agility: {totalAgility}</h3>
+    </div>
+    
     {team.length === 0 ? ( 
       <p>Please choose and add your fighters!</p>
     ) : (
