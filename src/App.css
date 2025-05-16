@@ -1,16 +1,26 @@
 #root {
   margin: 16px;
+  background-color: rgb(72, 131, 131);
 }
 
 ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 li {
   list-style: none;
   margin: 8px;
   padding: 8px;
-  border: whitesmoke 3px solid;
+  border: rgb(68, 24, 24) 3px solid;
   border-radius: 8px;
+  justify-items: center;
+}
+
+h1 {
+  justify-self: center;
+  text-transform: uppercase;
+  text-shadow: 3px 0px 2px;
+  color: rgb(217, 217, 217);
 }
