@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -108,8 +106,10 @@ const handleAddFighter = (fighter) => {
   setTeam([...team, fighter]);
 
   // remove the fighter from the menu and update the zombieFighters
+  setZombieFighters((fighters) => fighters.filter((f) => f.id !== fighter.id));
 
   // subtract the character's price from current money
+  setMoney((money) => money - fighter.price);
 }
 
 
@@ -131,7 +131,13 @@ const handleAddFighter = (fighter) => {
       </li>
     ))}
     </ul>
-    
+
+    <h2>My Team</h2>
+    <ul>
+      {team.map((fighter) => (
+        <li key={fighter.id}>{fighter.name}</li>
+      ))}
+    </ul>
     </>
   )
 }
