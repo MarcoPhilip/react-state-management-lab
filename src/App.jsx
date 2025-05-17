@@ -108,15 +108,30 @@ function App() {
       return;
     }
 
-  // add the fighter to the team
-  setTeam([...team, fighter]);
+    // add the fighter to the team
+    setTeam([...team, fighter]);
 
-  // remove the fighter from the menu and update the zombieFighters
-  setZombieFighters((fighters) => fighters.filter((f) => f.id !== fighter.id));
+    // remove the fighter from the menu and update the zombieFighters
+    setZombieFighters((fighters) => fighters.filter((f) => f.id !== fighter.id));
 
-  // subtract the character's price from current money
-  setMoney((money) => money - fighter.price);
-}
+    // subtract the character's price from current money
+    setMoney((money) => money - fighter.price);
+  }
+
+  // Create a function named handleRemoveFighter()
+  const handleRemoveFighter = (fighter) => {
+    // Remove the fighter from My Team by creating a new array that filters out the selected fighter
+    
+    const newTeam = team.filter(f => f.id !== fighter.id);
+    // Set the team state with the newTeam
+    setTeam(newTeam);
+
+    // Add the removed fighter back to the zombieFighters by duplicating the current zombieFighters and adding the deleted fighter after it
+    setZombieFighters([...zombieFighters, fighter]);
+
+    // Refund the money from the removed fighter
+    setMoney(currentMoney => currentMoney + fighter.price);
+  }
 
 
   return (
@@ -155,6 +170,7 @@ function App() {
             <p>Price: ${fighter.price}</p>
             <p>Strength: {fighter.strength}</p>
             <p>Agility: {fighter.agility}</p>
+            <button onClick={() => handleRemoveFighter(fighter)}>Remove Fighter</button>
           </li>
         ))}
       </ul>
